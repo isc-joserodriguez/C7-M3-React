@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import axios from "axios";
+import "./App.css";
 function App() {
+  const [form, setForm] = useState({
+    correo: "",
+    password: "",
+  });
+
+  const onChanged = (event) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const login = async () => {
+    const { data } = await axios.post(
+      "https://c7-m3-api-pjmi.vercel.app/v1/user/login",
+      form
+    );
+    console.log(data);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input
+        type="correo"
+        placeholder="correo"
+        name="correo"
+        onChange={onChanged}
+      />
+      <input
+        type="password"
+        placeholder="password"
+        name="password"
+        onChange={onChanged}
+      />
+      <button onClick={login}>Guardar</button>
     </div>
   );
 }
