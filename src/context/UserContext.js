@@ -3,7 +3,7 @@ import { useState, createContext } from "react";
 // ! 1.- Crear el contexto para el usuario
 const UserContext = createContext();
 
-//! 2.- Vamos a obtener un Provider
+//! 2.- Vamos a obtener al Provider del UserContext
 const { Provider } = UserContext;
 
 //! 3.- Crear componente

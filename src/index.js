@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
+import { PeliculaProvider } from "./context/PeliculaContext";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <UserProvider>
-      <App />
+      <PeliculaProvider>
+        <App />
+      </PeliculaProvider>
     </UserProvider>
   </BrowserRouter>
 );
