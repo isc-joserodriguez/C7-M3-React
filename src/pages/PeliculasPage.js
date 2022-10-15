@@ -34,7 +34,7 @@ const PeliculasPage = ({ columns }) => {
             <h5>${pelicula.price}</h5>
             <Button
               onClick={() => {
-                alert(pelicula._id);
+                console.log(pelicula.nombre, pelicula.price);
               }}
             >
               Add to cart

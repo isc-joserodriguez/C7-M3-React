@@ -8,6 +8,7 @@ import HomePage from "../pages/HomePage";
 import { UserContext } from "../context/UserContext";
 import Logout from "../components/Logout";
 import ProfilePage from "../pages/ProfilePage";
+import CartPage from "../pages/CartPage";
 const PublicRoutesComponent = () => {
   const {
     user: { token },
@@ -21,6 +22,7 @@ const PublicRoutesComponent = () => {
       {token && <Route path="/about" element={<AboutPage />} />}
       {token && <Route path="/logout" element={<Logout />} />}
       {token && <Route path="/profile" element={<ProfilePage />} />}
+      {token && <Route path="/cart" element={<CartPage />} />}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
