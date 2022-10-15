@@ -10,3 +10,16 @@ export const login = async (userInfo) => {
     return { error: e.response.data.detalles };
   }
 };
+
+export const getUserInfo = async () => {
+  try {
+    const { data } = await axios.get(path, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return data;
+  } catch (e) {
+    return { error: e.response.data.detalles };
+  }
+};

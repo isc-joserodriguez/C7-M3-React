@@ -17,10 +17,13 @@ const NavComponent = () => {
   ];
 
   const privRoutes = [
-    <Nav.Link as={Link} to="/about" key={0}>
+    <Nav.Link as={Link} to="/profile" key={0}>
+      Mi Perfil
+    </Nav.Link>,
+    <Nav.Link as={Link} to="/about" key={1}>
       Acerca de...
     </Nav.Link>,
-    <Nav.Link as={Link} to="/logout" key={1}>
+    <Nav.Link as={Link} to="/logout" key={2}>
       Cerrar sesión
     </Nav.Link>,
   ];
