@@ -20,6 +20,9 @@
     "start": "react-scripts start",
     "postbuild": "echo '/* /index.html  200' | cat >build/_redirects",
     "build": "react-scripts build",
+    "otro": "echo OTRO",
+    "preotro": "echo PREOTRO",
+    "postotro": "echo POSTOTRO",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
