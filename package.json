@@ -16,7 +16,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "prebuild": "echo El build va a comenzar",
     "start": "react-scripts start",
+    "postbuild": "echo '/* /index.html  200' | cat >build/_redirects",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
