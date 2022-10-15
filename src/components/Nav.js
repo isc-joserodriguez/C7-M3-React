@@ -18,10 +18,10 @@ const NavComponent = () => {
 
   const privRoutes = [
     <Nav.Link as={Link} to="/about" key={0}>
-      About
+      Acerca de...
     </Nav.Link>,
-    <Nav.Link as={Link} to="/peliculas" key={1}>
-      Peliculas
+    <Nav.Link as={Link} to="/logout" key={1}>
+      Cerrar sesión
     </Nav.Link>,
   ];
 
