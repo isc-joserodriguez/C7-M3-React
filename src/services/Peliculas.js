@@ -27,3 +27,16 @@ export const agregarPeliculas = async (pelicula) => {
     return { error: e.response.data.detalles };
   }
 };
+
+export const getMisPeliculas = async () => {
+  try {
+    const { data } = await axios.get(`${path}/misPeliculas`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+    return data;
+  } catch (e) {
+    return { error: e.response.data.detalles };
+  }
+};

@@ -10,8 +10,8 @@ const { Provider } = UserContext;
 const UserProvider = ({ children }) => {
   //! 4.- Creamos nuestro estado global
   const initialState = {
-    token: null,
-    tipo: null,
+    token: undefined,
+    tipo: undefined,
   };
   const [user, setUser] = useState(initialState);
 
@@ -36,6 +36,8 @@ const UserProvider = ({ children }) => {
     const tipo = localStorage.getItem("tipo");
     if (token && tipo) {
       guardarInfo(token, tipo);
+    } else {
+      guardarInfo(null, null);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -10,34 +10,39 @@ import Logout from "../components/Logout";
 import ProfilePage from "../pages/ProfilePage";
 import CartPage from "../pages/CartPage";
 import NuevaPeliculaPage from "../pages/NuevaPeliculaPage";
+import UsuariosPage from "../pages/UsuariosPage";
+import MisPeliculasPage from "../pages/MisPeliculasPage";
 const RouterComponent = () => {
   const {
     user: { token, tipo },
   } = useContext(UserContext);
 
   const clientRoutes = [
-    { path: "/", element: <PeliculasPage columns={6} />},
-    { path: "/about", element: <AboutPage />},
-    { path: "/cart", element: <CartPage />},
+    { path: "/", element: <PeliculasPage columns={6} /> },
+    { path: "/about", element: <AboutPage /> },
+    { path: "/cart", element: <CartPage /> },
   ];
 
   const adminRoutes = [
-    { path: "/", element: <h1>Admin</h1>},
+    { path: "/", element: <h1>Admin</h1> },
     { path: "/nueva-pelicula", element: <NuevaPeliculaPage /> },
+    { path: "/mis-peliculas", element: <MisPeliculasPage /> },
+    { path: "/usuarios", element: <UsuariosPage /> },
+    { path: "/usuarios/:id", element: <ProfilePage /> },
   ];
 
   const loginRoutes = tipo === "cliente" ? clientRoutes : adminRoutes;
 
   const privateRoutes = [
     ...loginRoutes,
-    { path: "/profile", element: <ProfilePage />},
-    { path: "/logout", element: <Logout />},
+    { path: "/profile", element: <ProfilePage /> },
+    { path: "/logout", element: <Logout /> },
   ];
 
   const publicRoutes = [
-    { path: "/", element: <HomePage />},
-    { path: "/login", element: <LoginPage />},
-    { path: "/registro", element: <RegistroPage />},
+    { path: "/", element: <HomePage /> },
+    { path: "/login", element: <LoginPage /> },
+    { path: "/registro", element: <RegistroPage /> },
   ];
 
   return (
@@ -49,7 +54,9 @@ const RouterComponent = () => {
         : publicRoutes.map((route, index) => (
             <Route key={index} path={route.path} element={route.element} />
           ))}
-      <Route path="*" element={<Navigate to="/" replace />} />
+      {token !== undefined && (
+        <Route path="*" element={<Navigate to="/" replace />} />
+      )}
     </Routes>
   );
 };

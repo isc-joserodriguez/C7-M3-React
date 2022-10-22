@@ -21,9 +21,22 @@ export const login = async (userInfo) => {
   }
 };
 
-export const getUserInfo = async () => {
+export const getUserInfo = async (id) => {
   try {
-    const { data } = await axios.get(path, {
+    const { data } = await axios.get(`${path}/${id ? id : ''}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return data;
+  } catch (e) {
+    return { error: e.response.data.detalles };
+  }
+};
+
+export const getAllUsers = async () => {
+  try {
+    const { data } = await axios.get(`${path}/getAll`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
       },

@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 import Loader from "../components/Loader";
 import { getUserInfo } from "../services/User";
 
 const ProfilePage = () => {
+  const { id } = useParams();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const getMyInfo = async () => {
+  const getUserInfoOnInit = async () => {
     setLoading(true);
-    const { detalles } = await getUserInfo();
+    const { detalles } = await getUserInfo(id);
     setUser(detalles);
     setLoading(false);
   };
 
   useEffect(() => {
-    getMyInfo();
+    getUserInfoOnInit();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
