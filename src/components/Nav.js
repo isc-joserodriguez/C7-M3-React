@@ -20,7 +20,10 @@ const NavComponent = () => {
     },
   ];
 
-  const adminRoutes = [{ path: "/", titulo: "Dashboard" }];
+  const adminRoutes = [
+    { path: "/", titulo: "Dashboard" },
+    { path: "/nueva-pelicula", titulo: "Nueva Pelicula" },
+  ];
 
   const loginRoutes = tipo === "cliente" ? clientRoutes : adminRoutes;
 

@@ -14,3 +14,16 @@ export const verPeliculas = async () => {
     return { error: e.response.data.detalles };
   }
 };
+
+export const agregarPeliculas = async (pelicula) => {
+  try {
+    const { data } = await axios.post(path, pelicula, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+    return data;
+  } catch (e) {
+    return { error: e.response.data.detalles };
+  }
+};

@@ -9,6 +9,7 @@ import { UserContext } from "../context/UserContext";
 import Logout from "../components/Logout";
 import ProfilePage from "../pages/ProfilePage";
 import CartPage from "../pages/CartPage";
+import NuevaPeliculaPage from "../pages/NuevaPeliculaPage";
 const RouterComponent = () => {
   const {
     user: { token, tipo },
@@ -22,6 +23,7 @@ const RouterComponent = () => {
 
   const adminRoutes = [
     { path: "/", element: <h1>Admin</h1>},
+    { path: "/nueva-pelicula", element: <NuevaPeliculaPage /> },
   ];
 
   const loginRoutes = tipo === "cliente" ? clientRoutes : adminRoutes;
