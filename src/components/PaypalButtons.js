@@ -15,7 +15,7 @@ const PaypalButtons = ({ currency, amount, peliculas }) => {
     };
     console.log(infoPedido);
     await guardarVenta(infoPedido);
-    /* limpiarCarrito(); */
+    limpiarCarrito();
   };
 
   useEffect(() => {
