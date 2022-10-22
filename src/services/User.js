@@ -7,6 +7,16 @@ export const login = async (userInfo) => {
     const { data } = await axios.post(`${path}/login`, userInfo);
     return data;
   } catch (e) {
+    /* const {
+      response:{
+        data: {
+          detalles
+        }
+      }
+    } = e; 
+    
+    return { error: detalles };
+    */
     return { error: e.response.data.detalles };
   }
 };

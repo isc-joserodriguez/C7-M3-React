@@ -10,12 +10,18 @@ import Logout from "../components/Logout";
 import ProfilePage from "../pages/ProfilePage";
 import CartPage from "../pages/CartPage";
 const PublicRoutesComponent = () => {
+  /* const {
+    user: { token },
+  } = useContext(UserContext); */
+
   const {
     user: { token },
   } = useContext(UserContext);
+
+  
   return (
     <Routes>
-      {token && <Route path="/" element={<PeliculasPage columns={4} />} />}
+      {token && <Route path="/" element={<PeliculasPage columns={6} />} />}
       {!token && <Route path="/" element={<HomePage />} />}
       {!token && <Route path="/login" element={<LoginPage />} />}
       {!token && <Route path="/registro" element={<RegistroPage />} />}

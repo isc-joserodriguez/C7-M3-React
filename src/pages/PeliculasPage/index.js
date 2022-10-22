@@ -1,7 +1,8 @@
 import { useEffect, useContext } from "react";
-import { PeliculaContext } from "../context/PeliculaContext";
-import { verPeliculas } from "../services";
+import { PeliculaContext } from "../../context/PeliculaContext";
+import { verPeliculas } from "../../services";
 import { Card, Button, Row } from "react-bootstrap";
+import "./style.css";
 const PeliculasPage = ({ columns }) => {
   const { peliculas, guardarPeliculas } = useContext(PeliculaContext);
 
@@ -22,7 +23,18 @@ const PeliculasPage = ({ columns }) => {
           key={index}
           className={`col-${12 / columns}`}
         >
-          <Card.Img variant="top" src={pelicula.img} />
+          {/* <div
+            style={{
+              width: "100%",
+              height: "200px",
+              backgroundImage: `url(${pelicula.img})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPositionX: '50%',
+            }}
+          />  */}
+
+          <Card.Img className="imgCard" variant="top" src={pelicula.img} />
           <Card.Body>
             <Card.Title>{pelicula.nombre}</Card.Title>
             <Card.Text>
