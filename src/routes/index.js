@@ -15,27 +15,27 @@ const RouterComponent = () => {
   } = useContext(UserContext);
 
   const clientRoutes = [
-    { path: "/", element: <PeliculasPage columns={6} />, titulo: "Home" },
-    { path: "/about", element: <AboutPage />, titulo: "Acerca de..." },
-    { path: "/cart", element: <CartPage />, titulo: "Carrito" },
+    { path: "/", element: <PeliculasPage columns={6} />},
+    { path: "/about", element: <AboutPage />},
+    { path: "/cart", element: <CartPage />},
   ];
 
   const adminRoutes = [
-    { path: "/", element: <h1>Admin</h1>, titulo: "Dashboard" },
+    { path: "/", element: <h1>Admin</h1>},
   ];
 
   const loginRoutes = tipo === "cliente" ? clientRoutes : adminRoutes;
 
   const privateRoutes = [
     ...loginRoutes,
-    { path: "/profile", element: <ProfilePage />, titulo: "Mi perfil" },
-    { path: "/logout", element: <Logout />, titulo: "Cerrar sesión" },
+    { path: "/profile", element: <ProfilePage />},
+    { path: "/logout", element: <Logout />},
   ];
 
   const publicRoutes = [
-    { path: "/", element: <HomePage />, titulo: "Inicio" },
-    { path: "/login", element: <LoginPage />, titulo: "Iniciar sesión" },
-    { path: "/registro", element: <RegistroPage />, titulo: "Registrarse" },
+    { path: "/", element: <HomePage />},
+    { path: "/login", element: <LoginPage />},
+    { path: "/registro", element: <RegistroPage />},
   ];
 
   return (
