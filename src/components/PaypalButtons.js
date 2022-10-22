@@ -1,9 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { usePayPalScriptReducer, PayPalButtons } from "@paypal/react-paypal-js";
+import { PeliculaContext } from "../context/PeliculaContext";
+import { guardarVenta } from "../services";
 
 const PaypalButtons = ({ currency, amount, peliculas }) => {
   const style = { layout: "vertical" };
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+  const { limpiarCarrito } = useContext(PeliculaContext);
+
+  const ventaHandler = async () => {
+    const infoPedido = {
+      total: amount,
+      productos: peliculas.map((pelicula) => pelicula._id),
+    };
+    console.log(infoPedido);
+    await guardarVenta(infoPedido);
+    /* limpiarCarrito(); */
+  };
 
   useEffect(() => {
     dispatch({
@@ -44,9 +57,8 @@ const PaypalButtons = ({ currency, amount, peliculas }) => {
         onApprove={function (data, actions) {
           // Petición para guardar los datos de la compra y limpiar el carrito
           // Stripe
-          console.log(peliculas);
           return actions.order.capture().then(function () {
-            console.log("data:", data);
+            ventaHandler();
           });
         }}
       />

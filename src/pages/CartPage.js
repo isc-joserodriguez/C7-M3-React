@@ -5,25 +5,27 @@ import { useContext } from "react";
 import { PeliculaContext } from "../context/PeliculaContext";
 
 const CartPage = () => {
-  const { peliculas } = useContext(PeliculaContext);
+  const { carrito } = useContext(PeliculaContext);
   /* const total = peliculas
     .map((pelicula) => pelicula.price)
     .reduce((valorActual, siguienteValor) => {
       return valorActual + siguienteValor;
     }, 0); */
-  const total = peliculas.reduce((valorActual, siguienteValor) => {
+  const total = carrito.reduce((valorActual, siguienteValor) => {
     return (
       (typeof valorActual === "number" ? valorActual : valorActual.price) +
       siguienteValor.price
     );
   }, 0);
-  return (
+  return !carrito.length ? (
+    <h1>No hay películas, agrega una.</h1>
+  ) : (
     <Row>
       <Col>
-        <ProductList peliculas={peliculas} total={total} />
+        <ProductList peliculas={carrito} total={total} />
       </Col>
       <Col>
-        <PaypalButtons peliculas={peliculas} currency="USD" amount={total} />
+        <PaypalButtons peliculas={carrito} currency="USD" amount={total} />
       </Col>
     </Row>
   );

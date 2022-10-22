@@ -4,7 +4,8 @@ import { verPeliculas } from "../../services";
 import { Card, Button, Row } from "react-bootstrap";
 import "./style.css";
 const PeliculasPage = ({ columns }) => {
-  const { peliculas, guardarPeliculas } = useContext(PeliculaContext);
+  const { peliculas, guardarPeliculas, agregarACarrito } =
+    useContext(PeliculaContext);
 
   const getPeliculas = async () => {
     const { detalles } = await verPeliculas();
@@ -46,7 +47,11 @@ const PeliculasPage = ({ columns }) => {
             <h5>${pelicula.price}</h5>
             <Button
               onClick={() => {
-                console.log(pelicula.nombre, pelicula.price);
+                agregarACarrito({
+                  nombre: pelicula.nombre,
+                  price: pelicula.price,
+                  _id: pelicula._id,
+                });
               }}
             >
               Add to cart
