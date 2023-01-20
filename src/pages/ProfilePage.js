@@ -19,7 +19,7 @@ const ProfilePage = () => {
   useEffect(() => {
     getUserInfoOnInit();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   //! Operador ternario
   return loading ? (
